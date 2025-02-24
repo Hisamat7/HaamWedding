@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344147872340",
+    "project_id": "wedwheel",
+    "storage_bucket": "wedwheel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344147872340:android:d23ef0aa4aa61fa33a7bc1",
+        "android_client_info": {
+          "package_name": "com.example.wedweel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfItxMZetw8Qowlz_L5ikZi6KcZKydG8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
