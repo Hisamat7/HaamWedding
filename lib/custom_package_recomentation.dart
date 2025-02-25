@@ -10,14 +10,12 @@ class BestServiceScreen extends StatefulWidget {
 }
 
 class _BestServiceScreenState extends State<BestServiceScreen> {
-  final TextEditingController _venueController =
-      TextEditingController(); // For number of people
+  final TextEditingController _venueController = TextEditingController();
   final TextEditingController _photoController = TextEditingController();
   final TextEditingController _makeupController = TextEditingController();
   final TextEditingController _foodController = TextEditingController();
   final TextEditingController _decorationController = TextEditingController();
 
-  // Define the order of categories
   final List<String> categoryOrder = [
     'venue',
     'photo',
@@ -31,12 +29,10 @@ class _BestServiceScreenState extends State<BestServiceScreen> {
   Future<Map<String, Map<String, dynamic>>> findBestPackages() async {
     Map<String, Map<String, dynamic>> bestPackages = {};
 
-    // Fetch best packages for each category in the defined order
     for (var category in categoryOrder) {
       double budget = 0;
       switch (category) {
         case 'venue':
-          // Venue is based on number of people, so skip budget filtering
           bestPackages[category] =
               await _fetchBestPackage(category, double.infinity);
           break;
@@ -99,7 +95,6 @@ class _BestServiceScreenState extends State<BestServiceScreen> {
       }
     }
 
-    // If no package matches the budget, return an empty map
     return bestService ?? {};
   }
 
@@ -114,158 +109,172 @@ class _BestServiceScreenState extends State<BestServiceScreen> {
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            // Venue (Number of People)
-            Text("Venue",
-                style: TextStyle(fontSize: 18, color: Colors.teal[800])),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _venueController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "number of people",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 2, 122, 108)),
-                    borderRadius: BorderRadius.circular(6)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 101, 255, 181)),
-                    borderRadius: BorderRadius.circular(6)),
+      body: Stack(
+        children: [
+          // Make the screen scrollable to avoid overflow when the keyboard appears
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+                // Venue (Number of People)
+                Text("Venue",
+                    style: TextStyle(fontSize: 18, color: Colors.teal[800])),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _venueController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "number of people",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 2, 122, 108)),
+                        borderRadius: BorderRadius.circular(6)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 101, 255, 181)),
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // Photo Budget
+                Text("photography",
+                    style: TextStyle(fontSize: 18, color: Colors.teal[800])),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _photoController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "Enter your budget",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 2, 122, 108)),
+                        borderRadius: BorderRadius.circular(6)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 101, 255, 181)),
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // Makeup Budget
+                Text("Makeup",
+                    style: TextStyle(fontSize: 18, color: Colors.teal[800])),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _makeupController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "Enter your budget",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 2, 122, 108)),
+                        borderRadius: BorderRadius.circular(6)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 101, 255, 181)),
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // Food Budget
+                Text("Food",
+                    style: TextStyle(fontSize: 18, color: Colors.teal[800])),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _foodController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "Enter your budget",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 2, 122, 108)),
+                        borderRadius: BorderRadius.circular(6)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 101, 255, 181)),
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // Decoration Budget
+                Text("Decoration",
+                    style: TextStyle(fontSize: 18, color: Colors.teal[800])),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _decorationController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "Enter your budget",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 2, 122, 108)),
+                        borderRadius: BorderRadius.circular(6)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: const Color.fromARGB(255, 101, 255, 181)),
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                ),
+                const SizedBox(height: 30),
+
+                // Find Best Packages Button
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 139, 222, 212),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        )),
+                    onPressed: _isLoading
+                        ? null
+                        : () async {
+                            setState(() {
+                              _isLoading = true; // Show loading indicator
+                            });
+
+                            var bestPackages = await findBestPackages();
+
+                            setState(() {
+                              _isLoading = false; // Hide loading indicator
+                            });
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BestPackageResultPage(
+                                    bestPackages: bestPackages),
+                              ),
+                            );
+                          },
+                    child: Text(
+                      "Find Best Packages",
+                      style: TextStyle(color: Colors.teal[700]),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Full-screen loading indicator
+          if (_isLoading)
+            Container(
+              color:
+                  Colors.black.withOpacity(0.5), // Semi-transparent background
+              child: const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
               ),
             ),
-            const SizedBox(height: 10),
-
-            // Photo Budget
-            Text("photography",
-                style: TextStyle(fontSize: 18, color: Colors.teal[800])),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _photoController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "Enter your budget",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 2, 122, 108)),
-                    borderRadius: BorderRadius.circular(6)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 101, 255, 181)),
-                    borderRadius: BorderRadius.circular(6)),
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Makeup Budget
-            Text("Makeup",
-                style: TextStyle(fontSize: 18, color: Colors.teal[800])),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _makeupController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "Enter your budget",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 2, 122, 108)),
-                    borderRadius: BorderRadius.circular(6)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 101, 255, 181)),
-                    borderRadius: BorderRadius.circular(6)),
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Food Budget
-            Text("Food",
-                style: TextStyle(fontSize: 18, color: Colors.teal[800])),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _foodController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "Enter your budget",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 2, 122, 108)),
-                    borderRadius: BorderRadius.circular(6)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 101, 255, 181)),
-                    borderRadius: BorderRadius.circular(6)),
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Decoration Budget
-            Text("Decoration",
-                style: TextStyle(fontSize: 18, color: Colors.teal[800])),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _decorationController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "Enter your budget",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 2, 122, 108)),
-                    borderRadius: BorderRadius.circular(6)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 101, 255, 181)),
-                    borderRadius: BorderRadius.circular(6)),
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // Find Best Packages Button
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 139, 222, 212),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    )),
-                onPressed: _isLoading
-                    ? null
-                    : () async {
-                        setState(() {
-                          _isLoading = true; // Show loading indicator
-                        });
-
-                        var bestPackages = await findBestPackages();
-
-                        setState(() {
-                          _isLoading = false; // Hide loading indicator
-                        });
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BestPackageResultPage(
-                                bestPackages: bestPackages),
-                          ),
-                        );
-                      },
-                child: _isLoading
-                    ? const CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      )
-                    : Text(
-                        "Find Best Packages",
-                        style: TextStyle(color: Colors.teal[700]),
-                      ),
-              ),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -312,56 +321,54 @@ class BestPackageResultPage extends StatelessWidget {
               package['image'] ?? "https://via.placeholder.com/50";
 
           return Card(
-            color: const Color.fromARGB(255, 233, 252, 248),
-            elevation: 5,
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(imageUrl,
-                    width: 50, height: 50, fit: BoxFit.cover),
-              ),
-              title: Text(name,
-                  style: TextStyle(fontSize: 16, color: Colors.teal[700])),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Price: ₹$price",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: const Color.fromARGB(255, 1, 77, 68))),
-                    Text(
-                        "Rating: ${avgRating != null ? avgRating.toStringAsFixed(1) : 'No rating'} ⭐",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: const Color.fromARGB(255, 0, 71, 63))),
-                  ],
-                ),
-              ),
-              trailing: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 208, 255, 250),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+              color: const Color.fromARGB(255, 233, 252, 248),
+              elevation: 5,
+              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: ListTile(
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(imageUrl,
+                        width: 50, height: 50, fit: BoxFit.cover),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserBookingScreen(
-                                vendorId: package['vendor_id'],
-                              )));
-                },
-                child: Text("Book",
-                    style: TextStyle(
-                      color: Colors.teal[700],
-                    )),
-              ),
-            ),
-          );
+                  title: Text(name,
+                      style: TextStyle(fontSize: 16, color: Colors.teal[700])),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Price: ₹$price",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: const Color.fromARGB(255, 1, 77, 68))),
+                        Text(
+                            "Rating: ${avgRating != null ? avgRating.toStringAsFixed(1) : 'No rating'} ⭐",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: const Color.fromARGB(255, 0, 71, 63))),
+                      ],
+                    ),
+                  ),
+                  trailing: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserBookingScreen(
+                                      vendorId: package['vendor_id'],
+                                    )));
+                      },
+                      child: Text("Book",
+                          style: TextStyle(
+                            color: Colors.teal[700],
+                          )),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 208, 255, 250),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ))));
         },
       ),
     );
