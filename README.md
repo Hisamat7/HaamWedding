@@ -22,7 +22,7 @@ Haam Wedding is a comprehensive event planning application that helps users esti
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/haam-wedding.git
+   git clone https://github.com/Hisamat7/haam-wedding.git
    ```
 2. Navigate to the project directory:
    ```bash
