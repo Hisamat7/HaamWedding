@@ -8,6 +8,10 @@ Haam Wedding is a comprehensive event planning application that helps users esti
 - **Decorations & Reception**: Customize event aesthetics and reception arrangements.
 - **Photography & Makeup**: Book professional services for the wedding.
 - **Food & Catering**: Select menus and catering options.
+- **User Authentication**: Secure login and registration using Firebase Authentication.
+-**Real-Time Updates**: Instantly updates booking status using Firebase Firestore.
+
+
 
 ## Technology Stack
 - Frontend: Flutter
