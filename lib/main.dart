@@ -12,17 +12,17 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform, 
   );
   runApp(ScreenUtilInit(
-    designSize: Size(384, 805),
+     designSize: const Size(384, 805),
     minTextAdapt: true,
     builder: (context, child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 237, 250, 244),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 237, 250, 244),
           fontFamily: 'Poppins',
         ),
         home:   Firstscreen(),
-      //  AdminHome(),
+       // AdminHome(),
       ); 
     },
   )); 
