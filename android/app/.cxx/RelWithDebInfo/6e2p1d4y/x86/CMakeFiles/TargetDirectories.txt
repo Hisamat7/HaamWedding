@@ -1,0 +1,2 @@
+C:/Users/User/HaamWedding/android/app/.cxx/RelWithDebInfo/6e2p1d4y/x86/CMakeFiles/edit_cache.dir
+C:/Users/User/HaamWedding/android/app/.cxx/RelWithDebInfo/6e2p1d4y/x86/CMakeFiles/rebuild_cache.dir
