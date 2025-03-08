@@ -13,7 +13,7 @@ class _TransactionState extends State<TransactionScreen> {
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           "Currently this screen is not available",
           style:

@@ -9,7 +9,7 @@ class Venue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: Scaffold(     
         appBar: AppBar(
             surfaceTintColor: Colors.transparent,
             backgroundColor: Colors.transparent,

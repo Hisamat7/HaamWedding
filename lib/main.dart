@@ -20,9 +20,9 @@ void main() async {
         theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 237, 250, 244),
           fontFamily: 'Poppins',
-        ),
-        home:   Firstscreen(),
-       // AdminHome(),
+        ),   
+        home:  // Firstscreen(),
+        AdminHome(),
       ); 
     },
   )); 
